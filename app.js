@@ -28,7 +28,6 @@ const subs=quizBank.filter(q=>q.system===x).map(q=>q.sub).filter((v,i,a)=>a.inde
 return '<button class="option folderCard '+(x===state.topic?"active":"")+'" data-topic="'+x+'"><strong>'+colors[i]+' '+x+'</strong><span>'+subs.join(" · ")+'</span><em>'+quizBank.filter(q=>q.system===x).length+' tavole disponibili</em></button>';
 }).join("");
 document.querySelectorAll("[data-topic]").forEach(b=>b.onclick=()=>{state.topic=b.dataset.topic;renderChoices()});
-document.getElementById("modes").innerHTML="";
 }
 function modeDesc(x){return x.startsWith("A")?"Nessun aiuto, risposta libera.":x.startsWith("B")?"Possibili risposte per orientarti.":x.startsWith("C")?"Simulazione d'esame: nessun aiuto.":x.startsWith("D")?"Fa ricomparire più spesso le strutture sbagliate.":"Selezione casuale di argomenti e strutture."}
 function handleAtlas(e){const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{state.custom={src:reader.result,name:f.name};alert("Immagine caricata. Nella prossima versione puoi anche costruire e salvare i punti direttamente sull'immagine.");};reader.readAsDataURL(f)}
